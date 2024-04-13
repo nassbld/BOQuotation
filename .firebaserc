@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "projectcotation": {
+      "hosting": {
+        "boquotation": [
+          "project-boquotation"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "projectcotation"
+  }
+}

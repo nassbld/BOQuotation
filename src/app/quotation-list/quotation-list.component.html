@@ -1,0 +1,23 @@
+<section class="container">
+  <mat-chip-listbox aria-label="Quote status" multiple>
+    <mat-chip-option selected (selectionChange)="treatedToggle($event)">Traitées</mat-chip-option>
+    <mat-chip-option selected (selectionChange)="waitingToggle($event)">En attente</mat-chip-option>
+  </mat-chip-listbox>
+  <section class="list">
+    <ng-container *ngFor="let quote of quotes">
+      <mat-card *ngIf="(treatedChipSelected && isTreated(quote)) || (waitingChipSelected && !isTreated(quote))">
+        <mat-card-content>
+          <img ngSrc="{{ quote.image }}" width="200" height="200" alt="Car picture">
+          <section class="right-side">
+            <div><strong>ID Client</strong><br/>{{ quote.clientId }}</div>
+            <div><strong>Cotation</strong><br/>{{ quote.quotation }}</div>
+            <div><strong>Description</strong><br/>{{ quote.description }}</div>
+          </section>
+          <button mat-icon-button aria-label="Delete awaiting quotation" (click)="deleteQuote(quote.quoteId)">
+            <mat-icon *ngIf="!isTreated(quote)">delete</mat-icon>
+          </button>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </section>
+</section>
